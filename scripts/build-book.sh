@@ -7,11 +7,19 @@ pandoc "${chapters[@]}" --metadata-file=metadata.yaml --css=assets/style.css --t
 cp /tmp/agent-book.epub downloads/agent-engineering-java.epub
 cp downloads/agent-engineering-java.epub docs/downloads/agent-engineering-java.epub
 cp downloads/agent-engineering-java.epub docs/site/downloads/agent-engineering-java.epub
-for file in "${chapters[@]}"; do base="$(basename "$file" .md)"; pandoc "$file" --metadata-file=metadata.yaml --css=style.css --standalone -o "docs/site/$base.html"; done
+for file in "${chapters[@]}"; do base="$(basename "$file" .md)"; pandoc "$file" --metadata-file=metadata.yaml --css=style.css --include-in-header=assets/reader-head.html --standalone -o "docs/site/$base.html"; done
 python3 - <<'PY'
 from pathlib import Path
 names=[p.stem for p in sorted(Path('manuscript').glob('*.md'))]
 links=''.join(f'<li><a href="{n}.html">{n}</a></li>' for n in names)
-Path('docs/site/index.html').write_text(f'''<!doctype html><meta charset="utf-8"><title>Agent 工程入门与实战</title><link rel="stylesheet" href="style.css"><main><h1>Agent 工程入门与实战</h1><p>Java 开发者学习指南：原理、离线示例、失败分析与工程验收。</p><p><a href="downloads/agent-engineering-java.epub">下载 EPUB</a></p><nav class="nav"><h2>目录</h2><ol>{links}</ol></nav></main>''',encoding='utf-8')
+Path('docs/site/index.html').write_text(f'''<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="reader.js" defer></script><title>Agent 工程入门与实战</title><link rel="stylesheet" href="style.css"><main><h1>Agent 工程入门与实战</h1><p>Java 开发者学习指南：原理、离线示例、失败分析与工程验收。</p><p><a href="downloads/agent-engineering-java.epub">下载 EPUB</a></p><nav class="nav"><h2>目录</h2><ol>{links}</ol></nav></main>''',encoding='utf-8')
 PY
-cp assets/style.css docs/site/style.css
+cp assets/reader.css docs/site/style.css
+cp assets/reader.js docs/site/reader.js
+
+python3 - <<'PYREADER'
+from pathlib import Path
+for page in Path('docs/site').glob('*.html'):
+    text = page.read_text().replace('<body>', '<body class="aias-basic-reader">').replace('<main>', '<main class="prose">')
+    page.write_text(text)
+PYREADER
