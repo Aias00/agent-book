@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.12.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Aias00" />
+  <meta name="dcterms.date" content="2026-10-20" />
+  <meta name="description" content="面向 Java 开发者的 Agent 原理、工具、检索、记忆、评测与部署实践。" />
+  <title>Agent 工程入门与实战：Java 开发者学习指南</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Agent 工程入门与实战：Java 开发者学习指南</h1>
+<p class="author">Aias00</p>
+<p class="date">2026-10-20</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">目录</h2>
+
+</nav>
+<h1 id="前言为什么现在学习-agent-工程">前言：为什么现在学习 Agent
+工程</h1>
+<p>这不是一本 API 目录，也不是某个框架的速查表。本书面向已经写过 Java
+服务的读者，沿着一个可测试的知识库助手，逐步理解模型、工具、上下文、检索、记忆、审批和评测如何组合。你不需要先学
+Python，也不需要先购买模型服务。</p>
+<h2 id="学习目标">学习目标</h2>
+<p>你将学会把“让模型做事”的愿望拆成可验证的接口，写出能拒绝非法动作、记录工具轨迹、在预算耗尽时停止、从检查点恢复的
+Java 程序。</p>
+<h2 id="原理">原理</h2>
+<p>书中示例使用 Java 21、Maven 和
+JUnit。前八章的核心示例使用固定假模型与本地文档，因此可以在无密钥环境运行；真实模型接入只在适配层讨论，并明确标记网络调用和费用。每章都包含学习目标、原理、Java
+示例、失败分析、练习、参考答案、小结和资料引用。</p>
+<h2 id="java-环境">Java 环境</h2>
+<p>安装 JDK 21 和 Maven 后，在 <code>examples/agent-core</code> 执行
+<code>mvn test</code>。本书不会把 Spring Boot
+当成前置条件；当框架能帮助部署时，我们会说明它替换的是哪一层。</p>
+<h2 id="练习与答案">练习与答案</h2>
+<p>先运行示例，再读失败分析，最后完成练习。答案不是唯一实现，重点是边界、证据和测试。</p>
+<h2 id="参考资料">参考资料</h2>
+<p>论文、OpenAI 工具调用文档、MCP 工具规范和 EPUB 规范的版本信息见
+<code>docs/superpowers/specs/2026-10-20-source-notes.md</code>。</p>
+<h2 id="java-示例">Java 示例</h2>
+<p><strong>实际运行输出（离线模拟）</strong>：<code>mvn test</code>
+通过。这个输出只证明固定测试通过，不证明真实模型质量。</p>
+<h2 id="失败分析">失败分析</h2>
+<p>如果读者直接把框架示例复制到生产系统，常见问题是没有超时、没有权限边界和没有回归样本。先完成本书的离线路径，再逐步接入外部服务。</p>
+<h2 id="参考答案">参考答案</h2>
+<p>学习路线的答案是先掌握循环、工具和证据，再学习协议和多
+Agent；每一步都保留可运行基线。</p>
+<h2 id="小结">小结</h2>
+<p>本书把 Agent 还原成可测试的 Java 系统。</p>
+<p><strong>示意输出（真实模型适配）</strong>：<code>response_id=...</code>。该行只说明格式，不能当作本书已调用供应商服务的证据。</p>
+</body>
+</html>
