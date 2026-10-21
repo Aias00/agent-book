@@ -1,135 +1,51 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.12.1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Aias00" />
-  <meta name="dcterms.date" content="2026-10-20" />
-  <meta name="description" content="面向 Java 开发者的 Agent 原理、工具、检索、记忆、评测与部署实践。" />
-  <title>Agent 工程入门与实战：Java 开发者学习指南</title>
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="reader.js" defer></script>
-</head>
-<body class="aias-basic-reader">
-<header id="title-block-header">
-<h1 class="title">Agent 工程入门与实战：Java 开发者学习指南</h1>
-<p class="author">Aias00</p>
-<p class="date">2026-10-20</p>
-</header>
-<nav id="TOC" role="doc-toc">
-<h2 id="toc-title">目录</h2>
-
-</nav>
-<h1 id="第-11-章-安全与人工审批">第 11 章 安全与人工审批</h1>
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f7f3">
+<meta name="description" content="面向 Java 开发者的 Agent 工程学习书：知识库助手、工具调用、检索、工作流、安全、评测与维护。">
+<title>第 11 章 安全与人工审批 · Agent 工程入门与实战</title>
+<link rel="stylesheet" href="style.css"><script src="reader.js" defer></script>
+</head><body id="top" data-page="11-security">
+<a class="skip-link" href="#content">跳到正文</a>
+<header class="site-header"><a class="site-brand" href="index.html"><span class="brand-mark" aria-hidden="true">A<span>_</span></span>Agent 工程入门与实战</a>
+<nav class="header-links" aria-label="站点导航"><a href="https://aias00.github.io/#books">电子书架</a><a class="header-download" href="downloads/agent-engineering-java.epub" download>下载 EPUB ↓</a></nav>
+<div class="reading-progress" aria-hidden="true"><span id="progress-bar"></span></div></header>
+<div class="reader-layout"><aside class="sidebar" aria-label="阅读导航">
+<details class="chapter-menu" id="chapter-menu" open><summary>全书目录 <span class="chapter-count">16 章 · 前言与附录</span><span class="menu-chevron" aria-hidden="true">⌄</span></summary>
+<div class="toc-scroll"><nav id="TOC" aria-label="全书章节"><ul><li><a href="index.html">阅读指南</a></li><li><a href="00-preface.html">前言：为什么现在学习 Agent 工程</a></li>
+<li><a href="01-boundary.html">第 1 章 Agent 的边界</a></li>
+<li><a href="02-model-and-interface.html">第 2 章 模型接口与不确定性</a></li>
+<li><a href="03-agent-loop.html">第 3 章 最小 Agent 循环</a></li>
+<li><a href="04-tools.html">第 4 章 工具设计</a></li>
+<li><a href="05-context.html">第 5 章 上下文工程</a></li>
+<li><a href="06-rag.html">第 6 章 检索增强生成</a></li>
+<li><a href="07-memory.html">第 7 章 记忆系统</a></li>
+<li><a href="08-workflows.html">第 8 章 规划与工作流</a></li>
+<li><a href="09-multi-agent.html">第 9 章 多 Agent 协作</a></li>
+<li><a href="10-mcp.html">第 10 章 协议与集成</a></li>
+<li><a href="11-security.html" aria-current="page">第 11 章 安全与人工审批</a></li>
+<li><a href="12-evaluation.html">第 12 章 评测方法</a></li>
+<li><a href="13-observability.html">第 13 章 观测与调试</a></li>
+<li><a href="14-performance.html">第 14 章 性能与部署</a></li>
+<li><a href="15-capstone.html">第 15 章 综合实战：知识库助手</a></li>
+<li><a href="16-maintenance.html">第 16 章 从实验到维护</a></li>
+<li><a href="99-appendix.html">附录：术语、检查清单与版本说明</a></li></ul></nav></div></details>
+<div class="sidebar-footer">JAVA / AGENT ENGINEERING<br><a href="downloads/agent-engineering-java.epub" download>下载 EPUB</a><a href="https://github.com/Aias00/agent-book">GitHub ↗</a></div></aside>
+<main id="content" tabindex="-1"><div class="reader-tools"><span class="reader-label">在线阅读</span>
+<div class="enhanced-controls" hidden><div class="font-controls"><button id="font-smaller" type="button" aria-label="缩小正文字号">A−</button><button id="font-larger" type="button" aria-label="放大正文字号">A+</button></div>
+<button id="theme-toggle" type="button" aria-label="切换阅读主题">切换深色</button></div></div><div class="chapter-meta"><a href="index.html">阅读指南</a><span>第 12 / 18 节</span></div><article class="book-content"><h1 id="第-11-章-安全与人工审批">第 11 章 安全与人工审批</h1>
 <blockquote>
 <p>本章主线：提示注入是数据影响控制流的问题；最小权限和人工确认要落到代码路径。</p>
 </blockquote>
 <h2 id="学习目标">学习目标</h2>
-<p>本章围绕“提示注入是数据影响控制流的问题；最小权限和人工确认要落到代码路径。”展开。读完本章后，你应当能把概念转成一个可测试的
-Java
-组件，说明它的输入、输出、失败语义和权限边界，并知道哪些结论来自资料、哪些是本书的工程推导。</p>
+<p>本章围绕“提示注入是数据影响控制流的问题；最小权限和人工确认要落到代码路径。”展开。读完本章后，你应当能把概念转成一个可测试的 Java 组件，说明它的输入、输出、失败语义和权限边界，并知道哪些结论来自资料、哪些是本书的工程推导。</p>
 <h2 id="原理">原理</h2>
-<p>Agent
-系统不是一个神秘的黑盒。把它拆成模型、编排器、工具、状态和观测五层，任何一层都可以替换，也都可能失败。模型负责在给定上下文中提出下一步，编排器决定是否接受这一步，工具负责执行受限动作，状态保存事实与进度，观测记录发生过什么。这个分层让我们能够用普通的
-Java 测试替代昂贵的端到端试错。</p>
-<p>工程上最重要的约束是把“建议”与“事实”分开。模型输出是建议，工具返回是事实，应用校验是授权边界。即使输出符合
-JSON
-Schema，也不能跳过业务校验；即使检索返回一段文字，也不能自动把它当成可信指令。每个动作都应有可拒绝、可超时、可重试或明确失败的路径。</p>
+<p>Agent 系统不是一个神秘的黑盒。把它拆成模型、编排器、工具、状态和观测五层，任何一层都可以替换，也都可能失败。模型负责在给定上下文中提出下一步，编排器决定是否接受这一步，工具负责执行受限动作，状态保存事实与进度，观测记录发生过什么。这个分层让我们能够用普通的 Java 测试替代昂贵的端到端试错。</p>
+<p>工程上最重要的约束是把“建议”与“事实”分开。模型输出是建议，工具返回是事实，应用校验是授权边界。即使输出符合 JSON Schema，也不能跳过业务校验；即使检索返回一段文字，也不能自动把它当成可信指令。每个动作都应有可拒绝、可超时、可重试或明确失败的路径。</p>
 <p>本章采用小步实现：先定义数据类型，再写一个确定性实现，最后才讨论真实模型。这样做牺牲了一点代码的即时炫技，却换来可复现的实验。你可以在没有密钥和网络的情况下运行大多数示例，再把模型适配器替换为真实端点。这个顺序也是排查问题的顺序：先证明业务逻辑，再判断模型是否带来额外不确定性。</p>
 <h2 id="java-示例">Java 示例</h2>
-<p>下面的代码使用 Java 21 的 <code>record</code>
-保存不可变事件，使用接口隔离外部依赖。它是书中示例的最小形态；生产代码还要加入日志脱敏、超时和持久化。示例输出标签说明了证据级别。</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">record</span> <span class="fu">ToolEvent</span><span class="op">(</span><span class="bu">String</span> traceId<span class="op">,</span> <span class="bu">String</span> tool<span class="op">,</span> <span class="bu">String</span> argument<span class="op">,</span> <span class="bu">String</span> result<span class="op">)</span> <span class="op">{}</span></span>
+<p>下面的代码使用 Java 21 的 <code>record</code> 保存不可变事件，使用接口隔离外部依赖。它是书中示例的最小形态；生产代码还要加入日志脱敏、超时和持久化。示例输出标签说明了证据级别。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">record</span> <span class="fu">ToolEvent</span><span class="op">(</span><span class="bu">String</span> traceId<span class="op">,</span> <span class="bu">String</span> tool<span class="op">,</span> <span class="bu">String</span> argument<span class="op">,</span> <span class="bu">String</span> result<span class="op">)</span> <span class="op">{}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> ModelGateway <span class="op">{</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    Decision <span class="fu">decide</span><span class="op">(</span>Observation observation<span class="op">);</span></span>
@@ -143,28 +59,21 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="
 <h2 id="练习">练习</h2>
 <ol type="1">
 <li>让恶意文档不能授予发送邮件的权限，对高风险工具要求人工确认。</li>
-<li>为一个“生成发布说明并提交
-Git”的需求画出模型、工具、状态和人工审批边界。</li>
+<li>为一个“生成发布说明并提交 Git”的需求画出模型、工具、状态和人工审批边界。</li>
 <li>为本章接口写一个失败测试：未知工具、空参数、预算耗尽三者至少覆盖两个。</li>
 <li>设计一个指标，能区分“检索到了正确文档”和“回答引用了正确文档”。</li>
 </ol>
 <h2 id="参考答案">参考答案</h2>
-<p>第一题应把生成文本和提交 Git
-分成两个阶段，提交工具必须要求人工确认并使用幂等键。第二题不应只断言字符串，而要断言拒绝原因和副作用计数。第三题至少需要分别统计召回命中率和引用覆盖率，并保留逐样本记录，不能只看平均值。</p>
+<p>第一题应把生成文本和提交 Git 分成两个阶段，提交工具必须要求人工确认并使用幂等键。第二题不应只断言字符串，而要断言拒绝原因和副作用计数。第三题至少需要分别统计召回命中率和引用覆盖率，并保留逐样本记录，不能只看平均值。</p>
 <h2 id="小结">小结</h2>
-<p>把 Agent 当成可观测、可拒绝、可恢复的普通软件系统，你就能用 Java
-的类型、接口和测试管理不确定性。下一章将在这个边界上继续增加能力，而不是直接引入更复杂的框架。</p>
+<p>把 Agent 当成可观测、可拒绝、可恢复的普通软件系统，你就能用 Java 的类型、接口和测试管理不确定性。下一章将在这个边界上继续增加能力，而不是直接引入更复杂的框架。</p>
 <h2 id="参考资料">参考资料</h2>
-<p>本章引用来源笔记中的 <strong>R6</strong>；对应链接、版本和适用限制见
-<code>docs/superpowers/specs/2026-10-20-source-notes.md</code>。本节中超出来源结论的实现建议均标为工程推导。</p>
+<p>本章引用来源笔记中的 <strong>R6</strong>；对应链接、版本和适用限制见 <code>docs/superpowers/specs/2026-10-20-source-notes.md</code>。本节中超出来源结论的实现建议均标为工程推导。</p>
 <h2 id="案例拆解">案例拆解</h2>
-<p>把本节放进一个真实的 Java
-服务时，先写一份输入输出契约。输入包括用户问题、会话标识、权限和预算；输出包括答案、引用、事件轨迹和可供上层处理的错误。契约要能在没有模型的情况下由测试构造。然后为每个边界写一个最小例子：正常请求只走一次工具，未知动作被拒绝，工具超时不会无限重试，证据不足时返回明确的“不知道”。这些例子比一段漂亮的提示词更能说明系统是否可靠。</p>
-<p>在调试时沿着同一个 traceId
-查看模型建议、校验结果、工具输入、工具输出和状态变化。不要只保存最终回答，因为最终文本无法解释为何发生了副作用。对于重试，记录第几次、等待多久以及是否带幂等键；对于缓存，记录命中原因和失效时间；对于人工审批，记录谁批准、批准了哪个版本的参数。这样做会增加少量日志成本，却能把“偶尔出错”变成可以复现的样本。</p>
-<p>如果你把这一步交给框架，仍然要在框架边界外保留同样的测试。框架可以替你序列化消息、管理连接或调度任务，但不能替你决定某个工具是否允许当前用户调用，也不能替你证明引用支持回答。Java
-的接口和 record 让这些责任可以在编译器和测试中留下痕迹。</p>
+<p>把本节放进一个真实的 Java 服务时，先写一份输入输出契约。输入包括用户问题、会话标识、权限和预算；输出包括答案、引用、事件轨迹和可供上层处理的错误。契约要能在没有模型的情况下由测试构造。然后为每个边界写一个最小例子：正常请求只走一次工具，未知动作被拒绝，工具超时不会无限重试，证据不足时返回明确的“不知道”。这些例子比一段漂亮的提示词更能说明系统是否可靠。</p>
+<p>在调试时沿着同一个 traceId 查看模型建议、校验结果、工具输入、工具输出和状态变化。不要只保存最终回答，因为最终文本无法解释为何发生了副作用。对于重试，记录第几次、等待多久以及是否带幂等键；对于缓存，记录命中原因和失效时间；对于人工审批，记录谁批准、批准了哪个版本的参数。这样做会增加少量日志成本，却能把“偶尔出错”变成可以复现的样本。</p>
+<p>如果你把这一步交给框架，仍然要在框架边界外保留同样的测试。框架可以替你序列化消息、管理连接或调度任务，但不能替你决定某个工具是否允许当前用户调用，也不能替你证明引用支持回答。Java 的接口和 record 让这些责任可以在编译器和测试中留下痕迹。</p>
 <h3 id="迁移提示">迁移提示</h3>
 <p>当你把示例迁移到已有服务时，先保留原有的认证、审计和超时策略，再接入模型。不要为了追求“自主”而删除确定性校验；能够在失败时停止通常比能够继续猜测更有价值。</p>
-</body>
-</html>
+</article><nav class="chapter-pagination" aria-label="章节翻页"><a class="prev" href="10-mcp.html"><span>← 上一章</span><strong>第 10 章 协议与集成</strong></a><a class="next" href="12-evaluation.html"><span>下一章 →</span><strong>第 12 章 评测方法</strong></a></nav></main></div>
+</body></html>

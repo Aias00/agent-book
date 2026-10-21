@@ -1,3 +1,57 @@
+/* Directory, font and reading progress enhancements; native links work without JS. */
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const read = key => { try { return localStorage.getItem('agent-book:' + key); } catch { return null; } };
+  const save = (key, value) => { try { localStorage.setItem('agent-book:' + key, value); } catch { /* Optional persistence. */ } };
+  const menu = document.getElementById('chapter-menu');
+  const mobile = matchMedia('(max-width: 900px)');
+  const setMenu = () => { menu.open = !mobile.matches; };
+  setMenu();
+  mobile.addEventListener('change', setMenu);
+  const controls = document.querySelector('.enhanced-controls');
+  controls.hidden = false;
+  const smaller = document.getElementById('font-smaller');
+  const larger = document.getElementById('font-larger');
+  const saved = Number(read('font-size'));
+  let size = saved >= 15 && saved <= 24 ? saved : mobile.matches ? 17 : 18;
+  const applySize = () => {
+    root.style.setProperty('--body-size', size + 'px');
+    smaller.disabled = size <= 15;
+    larger.disabled = size >= 24;
+  };
+  for (const [button, step] of [[smaller, -1], [larger, 1]]) button.addEventListener('click', () => {
+    size = Math.max(15, Math.min(24, size + step));
+    save('font-size', String(size));
+    applySize();
+  });
+  applySize();
+  const page = document.body.dataset.page;
+  const links = [...document.querySelectorAll('#TOC a')];
+  if (page !== 'index') save('last-page', page + '.html');
+  else {
+    const previous = read('last-page');
+    const link = links.find(item => item.getAttribute('href') === previous);
+    if (link) {
+      const note = document.getElementById('resume-note');
+      const resume = document.createElement('a');
+      resume.href = previous;
+      resume.textContent = '继续阅读：' + link.textContent;
+      note.append(resume);
+      note.hidden = false;
+    }
+  }
+  const bar = document.getElementById('progress-bar');
+  function progress() {
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (distance > 0 ? Math.max(0, Math.min(100, scrollY / distance * 100)) : 0) + '%';
+  }
+  addEventListener('scroll', progress, { passive: true });
+  addEventListener('resize', progress);
+  progress();
+})();
+
+/* BEGIN AIAS SHARED READER */
 /* Aias Reader 1.0. Shared preference across books on aias00.github.io. */
 (() => {
   'use strict';
@@ -87,3 +141,4 @@
     apply();
   });
 })();
+/* END AIAS SHARED READER */

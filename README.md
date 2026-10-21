@@ -18,6 +18,20 @@ cd examples/agent-core && mvn test
 
 `examples/agent-core` 的离线测试不需要模型密钥。真实模型适配只作为可选扩展，必须自行配置密钥、端点、超时和费用预算。本书中的示例输出会标记为“实际运行输出”或“示意输出”。
 
+## 在线阅读站
+
+网页模板与资源位于 `scripts/build_site.py` 和 `web/`。阅读页采用统一的顶部导航、左侧全书目录和居中正文，支持手机折叠目录、上一章 / 下一章、字号与主题设置，以及继续上次阅读。目录显示中文章节标题；关闭 JavaScript 仍可阅读与翻页。
+
+仅修改网页时不必重新制作 EPUB：
+
+```bash
+python3 scripts/build_site.py
+python3 scripts/verify_site.py
+python3 -m http.server 8000 --directory docs/site
+```
+
+推送后 Actions 会重新构建并检查网页，再发布 GitHub Pages。
+
 ## 目录
 
 前言 + 16 章 + 附录。章节 Markdown 是唯一内容源；`downloads/` 保存 EPUB，`docs/site/` 保存 GitHub Pages 静态站点，`docs/superpowers/` 保存设计、资料和实施记录。

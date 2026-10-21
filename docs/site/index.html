@@ -1,1 +1,41 @@
-<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="reader.js" defer></script><title>Agent 工程入门与实战</title><link rel="stylesheet" href="style.css"><main class="prose"><h1>Agent 工程入门与实战</h1><p>Java 开发者学习指南：原理、离线示例、失败分析与工程验收。</p><p><a href="downloads/agent-engineering-java.epub">下载 EPUB</a></p><nav class="nav"><h2>目录</h2><ol><li><a href="00-preface.html">00-preface</a></li><li><a href="01-boundary.html">01-boundary</a></li><li><a href="02-model-and-interface.html">02-model-and-interface</a></li><li><a href="03-agent-loop.html">03-agent-loop</a></li><li><a href="04-tools.html">04-tools</a></li><li><a href="05-context.html">05-context</a></li><li><a href="06-rag.html">06-rag</a></li><li><a href="07-memory.html">07-memory</a></li><li><a href="08-workflows.html">08-workflows</a></li><li><a href="09-multi-agent.html">09-multi-agent</a></li><li><a href="10-mcp.html">10-mcp</a></li><li><a href="11-security.html">11-security</a></li><li><a href="12-evaluation.html">12-evaluation</a></li><li><a href="13-observability.html">13-observability</a></li><li><a href="14-performance.html">14-performance</a></li><li><a href="15-capstone.html">15-capstone</a></li><li><a href="16-maintenance.html">16-maintenance</a></li><li><a href="99-appendix.html">99-appendix</a></li></ol></nav></main>
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f7f3">
+<meta name="description" content="面向 Java 开发者的 Agent 工程学习书：知识库助手、工具调用、检索、工作流、安全、评测与维护。">
+<title>阅读指南 · Agent 工程入门与实战</title>
+<link rel="stylesheet" href="style.css"><script src="reader.js" defer></script>
+</head><body id="top" data-page="index">
+<a class="skip-link" href="#content">跳到正文</a>
+<header class="site-header"><a class="site-brand" href="index.html"><span class="brand-mark" aria-hidden="true">A<span>_</span></span>Agent 工程入门与实战</a>
+<nav class="header-links" aria-label="站点导航"><a href="https://aias00.github.io/#books">电子书架</a><a class="header-download" href="downloads/agent-engineering-java.epub" download>下载 EPUB ↓</a></nav>
+<div class="reading-progress" aria-hidden="true"><span id="progress-bar"></span></div></header>
+<div class="reader-layout"><aside class="sidebar" aria-label="阅读导航">
+<details class="chapter-menu" id="chapter-menu" open><summary>全书目录 <span class="chapter-count">16 章 · 前言与附录</span><span class="menu-chevron" aria-hidden="true">⌄</span></summary>
+<div class="toc-scroll"><nav id="TOC" aria-label="全书章节"><ul><li><a href="index.html" aria-current="page">阅读指南</a></li><li><a href="00-preface.html">前言：为什么现在学习 Agent 工程</a></li>
+<li><a href="01-boundary.html">第 1 章 Agent 的边界</a></li>
+<li><a href="02-model-and-interface.html">第 2 章 模型接口与不确定性</a></li>
+<li><a href="03-agent-loop.html">第 3 章 最小 Agent 循环</a></li>
+<li><a href="04-tools.html">第 4 章 工具设计</a></li>
+<li><a href="05-context.html">第 5 章 上下文工程</a></li>
+<li><a href="06-rag.html">第 6 章 检索增强生成</a></li>
+<li><a href="07-memory.html">第 7 章 记忆系统</a></li>
+<li><a href="08-workflows.html">第 8 章 规划与工作流</a></li>
+<li><a href="09-multi-agent.html">第 9 章 多 Agent 协作</a></li>
+<li><a href="10-mcp.html">第 10 章 协议与集成</a></li>
+<li><a href="11-security.html">第 11 章 安全与人工审批</a></li>
+<li><a href="12-evaluation.html">第 12 章 评测方法</a></li>
+<li><a href="13-observability.html">第 13 章 观测与调试</a></li>
+<li><a href="14-performance.html">第 14 章 性能与部署</a></li>
+<li><a href="15-capstone.html">第 15 章 综合实战：知识库助手</a></li>
+<li><a href="16-maintenance.html">第 16 章 从实验到维护</a></li>
+<li><a href="99-appendix.html">附录：术语、检查清单与版本说明</a></li></ul></nav></div></details>
+<div class="sidebar-footer">JAVA / AGENT ENGINEERING<br><a href="downloads/agent-engineering-java.epub" download>下载 EPUB</a><a href="https://github.com/Aias00/agent-book">GitHub ↗</a></div></aside>
+<main id="content" tabindex="-1"><section class="book-intro"><div class="intro-copy"><p class="eyebrow">JAVA / AGENT ENGINEERING</p>
+<h1>Agent 工程<br><span>入门与实战</span></h1><p class="intro-description">写给 Java 开发者的学习指南。<br>围绕一个可测试的知识库助手，从原理走向工程实践。</p>
+<p class="book-facts"><span>16 章 · 前言与附录</span><span>Java 21</span><span>离线示例 · 练习与答案</span></p>
+<div class="intro-actions"><a class="button button-primary" href="00-preface.html">开始阅读 →</a><a class="button button-secondary" href="downloads/agent-engineering-java.epub" download>下载 EPUB ↓</a></div><p class="resume-note" id="resume-note" hidden></p></div>
+<div class="cover-preview"><img src="assets/cover.svg" alt="Agent 工程入门与实战电子书封面" width="600" height="900"></div></section><div class="reader-tools"><span class="reader-label">选择章节</span>
+<div class="enhanced-controls" hidden><div class="font-controls"><button id="font-smaller" type="button" aria-label="缩小正文字号">A−</button><button id="font-larger" type="button" aria-label="放大正文字号">A+</button></div>
+<button id="theme-toggle" type="button" aria-label="切换阅读主题">切换深色</button></div></div><h2 class="home-heading">从一个知识库助手开始</h2><div class="chapter-grid"><a class="chapter-card" href="00-preface.html"><span>前言</span>前言：为什么现在学习 Agent 工程</a><a class="chapter-card" href="01-boundary.html"><span>CHAPTER 01</span>第 1 章 Agent 的边界</a><a class="chapter-card" href="02-model-and-interface.html"><span>CHAPTER 02</span>第 2 章 模型接口与不确定性</a><a class="chapter-card" href="03-agent-loop.html"><span>CHAPTER 03</span>第 3 章 最小 Agent 循环</a><a class="chapter-card" href="04-tools.html"><span>CHAPTER 04</span>第 4 章 工具设计</a><a class="chapter-card" href="05-context.html"><span>CHAPTER 05</span>第 5 章 上下文工程</a><a class="chapter-card" href="06-rag.html"><span>CHAPTER 06</span>第 6 章 检索增强生成</a><a class="chapter-card" href="07-memory.html"><span>CHAPTER 07</span>第 7 章 记忆系统</a><a class="chapter-card" href="08-workflows.html"><span>CHAPTER 08</span>第 8 章 规划与工作流</a><a class="chapter-card" href="09-multi-agent.html"><span>CHAPTER 09</span>第 9 章 多 Agent 协作</a><a class="chapter-card" href="10-mcp.html"><span>CHAPTER 10</span>第 10 章 协议与集成</a><a class="chapter-card" href="11-security.html"><span>CHAPTER 11</span>第 11 章 安全与人工审批</a><a class="chapter-card" href="12-evaluation.html"><span>CHAPTER 12</span>第 12 章 评测方法</a><a class="chapter-card" href="13-observability.html"><span>CHAPTER 13</span>第 13 章 观测与调试</a><a class="chapter-card" href="14-performance.html"><span>CHAPTER 14</span>第 14 章 性能与部署</a><a class="chapter-card" href="15-capstone.html"><span>CHAPTER 15</span>第 15 章 综合实战：知识库助手</a><a class="chapter-card" href="16-maintenance.html"><span>CHAPTER 16</span>第 16 章 从实验到维护</a><a class="chapter-card" href="99-appendix.html"><span>附录</span>附录：术语、检查清单与版本说明</a></div></main></div>
+</body></html>
