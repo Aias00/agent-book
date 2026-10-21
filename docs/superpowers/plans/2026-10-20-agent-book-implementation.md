@@ -4,7 +4,7 @@
 
 **Goal:** 编写面向 Java 开发者的中文 Agent 学习书，生成可验证的 EPUB 和 GitHub Pages 在线阅读站点，并提交到用户的 GitHub。
 
-**Architecture:** 以 Markdown 章节作为唯一内容源，同时生成 EPUB 与静态 HTML。Java 21 + Maven 示例按渐进检查点组织，核心离线模拟不依赖模型密钥；可选模型适配层单独隔离。生成脚本把在线站点写入 `docs/site/`，把 EPUB 写入 `docs/downloads/`，保留 `docs/superpowers/` 设计与计划文件；GitHub Actions 发布整个 `docs/`。
+**Architecture:** 以 Markdown 章节作为唯一内容源，同时生成 EPUB 与静态 HTML。Java 21 + Maven 示例按渐进检查点组织，核心离线模拟不依赖模型密钥；可选模型适配层单独隔离。生成脚本把在线站点写入 `docs/site/`，把规范交付副本写入根目录 `downloads/`，并复制一份到 `docs/downloads/`供 Pages 下载，保留 `docs/superpowers/` 设计与计划文件；GitHub Actions 发布整个 `docs/`。
 
 **Tech Stack:** Java 21, Maven, JUnit 5, Jackson（仅模型适配需要）, Pandoc, HTML/CSS, GitHub Actions, GitHub Pages。
 
@@ -49,9 +49,9 @@
 
 ### Task 5: 构建 EPUB 与在线阅读站点
 
-**Files:** `scripts/build-book.sh`, `scripts/check-book.py`, `assets/cover.svg`, `assets/style.css`, `docs/site/index.html`, `docs/site/style.css`, `docs/downloads/agent-engineering-java.epub`, `.github/workflows/pages.yml`
+**Files:** `scripts/build-book.sh`, `scripts/check-book.py`, `assets/cover.svg`, `assets/style.css`, `docs/site/index.html`, `docs/site/style.css`, `downloads/agent-engineering-java.epub`, `docs/downloads/agent-engineering-java.epub`, `.github/workflows/pages.yml`
 
-- [ ] 用 `metadata.yaml` 和 `assets/cover.svg` 生成 EPUB 3；把 Markdown 转为 `docs/site/` 静态 HTML，生成章节导航、代码样式和指向 `../downloads/agent-engineering-java.epub` 的下载入口；脚本不得删除 `docs/superpowers/`。
+- [ ] 用 `metadata.yaml` 和 `assets/cover.svg` 生成 EPUB 3 到 `downloads/agent-engineering-java.epub`，再复制到 `docs/downloads/`；把 Markdown 转为 `docs/site/` 静态 HTML，生成章节导航、代码样式和指向 `../downloads/agent-engineering-java.epub` 的下载入口；脚本不得删除 `docs/superpowers/`。
 - [ ] 检查 EPUB ZIP/XML、内部链接、元数据和阅读顺序；如环境可用运行 EPUBCheck。
 - [ ] 用本地 HTTP 服务人工检查桌面/移动布局、中文排版、目录导航、Java 代码块和下载。
 
@@ -69,6 +69,7 @@
 
 - [ ] 检查 16 章和附录全部存在；每章必须包含学习目标、原理、Java 示例、失败分析、练习、参考答案、小结和至少一个与来源笔记对应的引用或明确标注“工程推导”。
 - [ ] 检查中文正文（不含代码、目录、元数据）总量达到 40,000–60,000 字符；脚本报告每章字符数和缺失段落。
+- [ ] 检查每段示例输出明确标注“实际运行输出”或“示意输出”，并拒绝无标签的输出段落。
 - [ ] 只有完整性检查、测试、EPUB 检查和在线人工阅读全部有证据后，才在 README 标注可读地址和下载地址。
 
 每个任务完成后运行相关验证并单独提交；最终发布前执行全量验证，只有证据齐全才报告完成。
